@@ -20,7 +20,6 @@ export default class FilmeItem extends Component {
                     <Text>{this.props.filme.title}</Text>
                 </View>
             </TouchableHighlight>
-
         );
     }
 }

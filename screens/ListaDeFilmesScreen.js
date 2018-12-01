@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
-  FlatList
+  FlatList,
+  Alert
 } from 'react-native';
 import FilmeItem from '../components/FilmeItem';
 
@@ -22,6 +23,7 @@ export default class ListaDeFilmesScreen extends Component {
         });
       }).catch((error) => {
         console.error(error);
+        Alert.alert("Aviso", "Não foi possível estabelecer uma conexão com o servidor, por favor tente novamente.");
       });
   }
 
