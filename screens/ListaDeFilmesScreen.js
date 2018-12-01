@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   FlatList
 } from 'react-native';
-import Filme from '../components/Filme';
+import FilmeItem from '../components/FilmeItem';
 
 export default class ListaDeFilmesScreen extends Component {
 
@@ -30,7 +30,7 @@ export default class ListaDeFilmesScreen extends Component {
       <FlatList data={this.state.filmes}
         keyExtractor={item => item.id.toString()}
         renderItem={({ item }) =>
-          <Filme filme={item} />
+          <FilmeItem filme={item} />
         }
       />
     );
