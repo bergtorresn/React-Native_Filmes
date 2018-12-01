@@ -9,13 +9,12 @@ import {
 
 const larguraDaTela = Dimensions.get('screen').width;
 
-// Obs.: Para utlizar código js dentro da sintaxe JSX, deve implementar o código dentro de chaves {}
 export default class ListaDeFilmesScreen extends Component {
     render() {
         return (
             <View style={styles.row}>
-                <Text>{this.props.filme.usuario}</Text>
-                <Image source={require('../resources/placeholder/placeholder_filme.png')} style={styles.imgFilme} />
+                <Text>{this.props.filme.title}</Text>
+                <Image source={{uri: "https://image.tmdb.org/t/p/w200" + this.props.filme.poster_path}} style={styles.imgFilme} />
             </View>
         );
     }
