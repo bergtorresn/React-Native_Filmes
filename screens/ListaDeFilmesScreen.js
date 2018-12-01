@@ -3,26 +3,35 @@ import {
   FlatList
 } from 'react-native';
 import Filme from '../components/Filme';
-    
+
 export default class ListaDeFilmesScreen extends Component {
 
-  constructor(){
+  constructor() {
     super();
     this.state = {
-      filmes: [{ id: 1, usuario: 'teste1' },
-      { id: 2, usuario: 'teste2' },
-      { id: 3, usuario: 'teste3' },
-      { id: 4, usuario: 'teste4' }]
+      filmes: []
     }
+  }
+
+  componentDidMount() {
+    fetch("https://api.themoviedb.org/3/movie/popular?api_key=a8b15cb8e4b148e23a32afe20e64cde9&language=pt-BR")
+      .then(resposta => resposta.json())
+      .then((json) => {
+        this.setState({
+          filmes: json.results
+        });
+      }).catch((error) => {
+        console.error(error);
+      });
   }
 
   render() {
     return (
-      <FlatList data={this.state.filmes} 
-      keyExtractor={item => item.id.toString()}
-      renderItem={({ item }) =>
-        <Filme filme={item}/>
-      }
+      <FlatList data={this.state.filmes}
+        keyExtractor={item => item.id.toString()}
+        renderItem={({ item }) =>
+          <Filme filme={item} />
+        }
       />
     );
   }
