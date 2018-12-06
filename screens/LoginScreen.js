@@ -19,7 +19,7 @@ export default class LoginScreen extends Component {
     }
   }
 
-  login = async () => {
+  entrarNaConta = async () => {
     const { email, senha } = this.state;
     try {
       const usuario = await firebase.auth().signInWithEmailAndPassword(email, senha);
@@ -40,7 +40,7 @@ export default class LoginScreen extends Component {
           value={this.state.senha}
           onChangeText={senha => this.setState({ senha })}
           style={styles.loginInput} />
-        <TouchableOpacity onPress={this.login}
+        <TouchableOpacity onPress={this.entrarNaConta}
           style={styles.loginButton}>
           <Text style={styles.loginTextButton}>Entrar</Text>
         </TouchableOpacity>
