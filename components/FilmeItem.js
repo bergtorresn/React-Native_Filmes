@@ -17,7 +17,7 @@ export default class FilmeItem extends Component {
             <TouchableOpacity onPress={() => Alert.alert(this.props.filme.title)} underlayColor='black'>
                 <View style={styles.filmeItemView}>
                     <Image source={{ uri: "https://image.tmdb.org/t/p/w200" + this.props.filme.poster_path }} style={styles.filmeItemCapa} />
-                    <Text style={styles.filmeItemTitulo} >{this.props.filme.title}</Text>
+                    <Text style={styles.filmeItemTitulo}>{this.props.filme.title}</Text>
                 </View>
             </TouchableOpacity>
         );
