@@ -1,7 +1,7 @@
 /** @format */
 
 import {AppRegistry} from 'react-native';
-import CadastroScreen from './screens/CadastroScreen';
+import ListaDeFilmesScreen from './screens/ListaDeFilmesScreen';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => CadastroScreen);
+AppRegistry.registerComponent(appName, () => ListaDeFilmesScreen);

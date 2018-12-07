@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   FlatList,
-  Alert
+  Alert,
+  StyleSheet
 } from 'react-native';
 import FilmeItem from '../components/FilmeItem';
 
@@ -29,7 +30,7 @@ export default class ListaDeFilmesScreen extends Component {
 
   render() {
     return (
-      <FlatList data={this.state.filmes}
+      <FlatList style={styles.listaFlatList} numColumns='2' data={this.state.filmes}
         keyExtractor={item => item.id.toString()}
         renderItem={({ item }) =>
           <FilmeItem filme={item} />
@@ -38,3 +39,9 @@ export default class ListaDeFilmesScreen extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  listaFlatList: {
+      flex: 1,
+  }
+});
