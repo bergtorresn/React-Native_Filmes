@@ -10,6 +10,7 @@ import {
   Alert,
   AsyncStorage
 } from 'react-native';
+import firebase from 'react-native-firebase'
 
 const larguraDaTela = Dimensions.get('screen').width;
 

@@ -22,7 +22,7 @@ export default class LoginScreen extends Component {
   entrarNaConta = async () => {
     const { email, senha } = this.state;
     try {
-      const usuario = await firebase.auth().signInWithEmailAndPassword(email, senha);
+      await firebase.auth().signInWithEmailAndPassword(email, senha);
       Alert.alert("Aviso", "Logado com sucesso");
     } catch (error) {
       Alert.alert("Aviso", error);
@@ -33,11 +33,14 @@ export default class LoginScreen extends Component {
     return (
       <View style={styles.loginView}>
         <TextInput placeholder="Digite o seu e-mail"
+          autoCapitalize='none'
+          keyboardType='email-address'
           value={this.state.email}
           onChangeText={email => this.setState({ email })}
           style={styles.loginInput} />
         <TextInput placeholder="Digite a sua senha"
           value={this.state.senha}
+          secureTextEntry
           onChangeText={senha => this.setState({ senha })}
           style={styles.loginInput} />
         <TouchableOpacity onPress={this.entrarNaConta}

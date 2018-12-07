@@ -22,7 +22,7 @@ export default class CadastroScreen extends Component {
     novoUsuario = async () => {
         const { email, senha } = this.state;
         try {
-            const usuario = await firebase.auth().createUserWithEmailAndPassword(email, senha);
+            await firebase.auth().createUserWithEmailAndPassword(email, senha);
             Alert.alert("Aviso", "Usuário criado com sucesso");
         } catch (error) {
             Alert.alert("Aviso", error);
@@ -41,6 +41,7 @@ export default class CadastroScreen extends Component {
                 <TextInput placeholder="Digite a sua senha"
                     value={this.state.senha}
                     autoCapitalize='none'
+                    secureTextEntry
                     onChangeText={senha => this.setState({ senha })}
                     style={styles.loginInput} />
                 <TouchableOpacity onPress={this.novoUsuario}
