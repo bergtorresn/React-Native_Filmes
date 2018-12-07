@@ -24,7 +24,7 @@ export default class DetalhesDoFilmeScreen extends Component {
       <ScrollView>
         <View style={styles.filmeDetalheView}>
           <Image source={{ uri: "https://image.tmdb.org/t/p/w500/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg" }} style={styles.filmeDetalheCapa} />
-          <TouchableOpacity onPress={this.marcarFilme} underlayColor='black' style={styles.filmeDetalheBtnFavoritar}>
+          <TouchableOpacity onPress={this.gerenciarStorage} underlayColor='black' style={styles.filmeDetalheBtnFavoritar}>
             <Text>Salvar</Text>
           </TouchableOpacity>
           <Text style={styles.filmeDetalheTitulo}>Animais Fantásticos: Os Crimes de Grindelwald</Text>
@@ -33,26 +33,20 @@ export default class DetalhesDoFilmeScreen extends Component {
       </ScrollView>
     );
   }
-}
 
-marcarFilme = async () => {
-  try {
-    await AsyncStorage.setItem('testando', 'teste');
-    Alert.alert("armazenou");
-  } catch (error) {
-    Alert.alert(error);
-  }
-}
-
-desmarcarFilme = async () => {
-  try {
-    const value = await AsyncStorage.getItem('testando');
-    Alert.alert("nulo");
-    if (value !== null) {
-      Alert.alert(value);
+  gerenciarStorage = async () => {
+    try {
+      const value = await AsyncStorage.getItem('testando');
+      if (value !== null) {
+        await AsyncStorage.removeItem('testando');
+        Alert.alert("desmarcou");
+      } else {
+        await AsyncStorage.setItem('testando', 'teste');
+        Alert.alert("marcou");
+      }
+    } catch (error) {
+      Alert.alert(error);
     }
-  } catch (error) {
-    Alert.alert(error);
   }
 }
 
@@ -85,6 +79,5 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5
   }
-
 });
 
