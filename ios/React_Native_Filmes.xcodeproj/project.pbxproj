@@ -39,6 +39,7 @@
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		53E7BE41BF289F4444A0986D /* libPods-React_Native_FilmesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE040774AE9C792BA6DE09C /* libPods-React_Native_FilmesTests.a */; };
 		6192E08521B6055500FC2B7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6192E08421B6055400FC2B7D /* GoogleService-Info.plist */; };
+		61B3909521BC615C00ADF210 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B3909121BC615100ADF210 /* libReactNativeNavigation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		87884BD904F14DD08C603F1A /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA1896C5C6B419BA2D7A05F /* libRNFirebase.a */; };
 		A5EEB0EE54925C0B38FDAEF6 /* libPods-React_Native_Filmes-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C9919F36981B87D7324682A /* libPods-React_Native_Filmes-tvOSTests.a */; };
@@ -306,6 +307,20 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNFirebase;
 		};
+		61B3909021BC615100ADF210 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61B3906621BC615100ADF210 /* ReactNativeNavigation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D8AFADBD1BEE6F3F00A4592D;
+			remoteInfo = ReactNativeNavigation;
+		};
+		61B3909221BC615100ADF210 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61B3906621BC615100ADF210 /* ReactNativeNavigation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7B49FEBB1E95090800DEB3EA;
+			remoteInfo = ReactNativeNavigationTests;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -361,6 +376,7 @@
 		586A9BC5A541FE3B4CDD12AD /* libPods-React_Native_Filmes-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-React_Native_Filmes-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6192E08421B6055400FC2B7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		61B3906621BC615100ADF210 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/lib/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		96EDE514CB582E0081A60E72 /* Pods-React_Native_Filmes-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-React_Native_Filmes-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-React_Native_Filmes-tvOS/Pods-React_Native_Filmes-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -387,6 +403,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61B3909521BC615C00ADF210 /* libReactNativeNavigation.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -586,6 +603,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		61B3906721BC615100ADF210 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61B3909121BC615100ADF210 /* libReactNativeNavigation.a */,
+				61B3909321BC615100ADF210 /* ReactNativeNavigationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -598,6 +624,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				61B3906621BC615100ADF210 /* ReactNativeNavigation.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -837,6 +864,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 61B3906721BC615100ADF210 /* Products */;
+					ProjectRef = 61B3906621BC615100ADF210 /* ReactNativeNavigation.xcodeproj */;
 				},
 				{
 					ProductGroup = 6192E07F21B604B400FC2B7D /* Products */;
@@ -1097,6 +1128,20 @@
 			fileType = archive.ar;
 			path = libRNFirebase.a;
 			remoteRef = 6192E08221B604B600FC2B7D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		61B3909121BC615100ADF210 /* libReactNativeNavigation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeNavigation.a;
+			remoteRef = 61B3909021BC615100ADF210 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		61B3909321BC615100ADF210 /* ReactNativeNavigationTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ReactNativeNavigationTests.xctest;
+			remoteRef = 61B3909221BC615100ADF210 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {

@@ -1,7 +1,20 @@
 /** @format */
 
-import {AppRegistry} from 'react-native';
-import LoginScreen from './screens/LoginScreen';
-import {name as appName} from './app.json';
+import { Navigation } from 'react-native-navigation';
+import { registrarScreens } from './utils/RegistrarScreens';
 
-AppRegistry.registerComponent(appName, () => LoginScreen);
+registrarScreens();
+
+Navigation.events().registerAppLaunchedListener(() => {
+    Navigation.setRoot({
+        root: {
+          stack: {
+            children: [{
+              component: {
+                name: "Launcher"
+              }
+            }]
+          }
+        }
+      });
+    });
