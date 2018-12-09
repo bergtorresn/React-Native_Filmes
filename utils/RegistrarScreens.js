@@ -5,4 +5,6 @@ export function registrarScreens() {
   Navigation.registerComponent('Login', () => require('../screens/LoginScreen').default);
   Navigation.registerComponent('Cadastro', () => require('../screens/CadastroScreen').default);
   Navigation.registerComponent('Home', () => require('../screens/ListaDeFilmesScreen').default);
+  Navigation.registerComponent('Filme', () => require('../screens/DetalhesDoFilmeScreen').default);
+
 }

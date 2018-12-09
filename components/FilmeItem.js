@@ -6,15 +6,19 @@ import {
     Image,
     Dimensions,
     TouchableOpacity,
-    Alert
 } from 'react-native';
+import { Navigation } from 'react-native-navigation'
 
 const larguraDaTela = (Dimensions.get('screen').width / 2) - 15;
 
 export default class FilmeItem extends Component {
     render() {
         return (
-            <TouchableOpacity onPress={() => Alert.alert(this.props.filme.title)} underlayColor='black'>
+            <TouchableOpacity onPress={Navigation.push(this.props.componentId, {
+                component: {
+                    name: 'Filme',
+                }
+            })} underlayColor='black'>
                 <View style={styles.filmeItemView}>
                     <Image source={{ uri: "https://image.tmdb.org/t/p/w200" + this.props.filme.poster_path }} style={styles.filmeItemCapa} />
                     <Text style={styles.filmeItemTitulo}>{this.props.filme.title}</Text>
