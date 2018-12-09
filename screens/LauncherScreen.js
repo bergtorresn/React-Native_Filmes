@@ -12,7 +12,6 @@ usuarioLogado = async () => {
     try {
         const user = await firebase.auth().currentUser.uid;
         if (user !== null) {
-            console.log(user)
             return true;
         }
         return false;
@@ -25,9 +24,9 @@ export default class LauncherScreen extends Component {
 
     componentDidMount() {
         if (usuarioLogado) {
-            navegarParaLogin();
-        } else {
             navegarParaHome();
+        } else {
+            navegarParaLogin();
         }
     }
 
