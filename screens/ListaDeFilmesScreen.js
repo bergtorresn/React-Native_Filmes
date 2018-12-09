@@ -8,6 +8,16 @@ import FilmeItem from '../components/FilmeItem';
 
 export default class ListaDeFilmesScreen extends Component {
 
+  static get options(){
+    return {
+      topBar: {
+        title: {
+          text: "Filmes"
+        },
+      }
+    };
+  }
+
   constructor() {
     super();
     this.state = {

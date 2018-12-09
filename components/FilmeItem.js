@@ -27,7 +27,7 @@ export default class FilmeItem extends Component {
 const styles = StyleSheet.create({
     filmeItemView: {
         flex: 1,
-        marginTop: 30,
+        marginTop: 10,
         marginLeft: 10,
     },
     filmeItemCapa: {

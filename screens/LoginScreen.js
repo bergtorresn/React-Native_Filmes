@@ -8,6 +8,7 @@ import {
   StyleSheet
 } from 'react-native';
 import firebase from 'react-native-firebase'
+import { Navigation } from 'react-native-navigation'
 
 export default class LoginScreen extends Component {
 
@@ -23,7 +24,11 @@ export default class LoginScreen extends Component {
     const { email, senha } = this.state;
     try {
       await firebase.auth().signInWithEmailAndPassword(email, senha);
-      Alert.alert("Aviso", "Logado com sucesso");
+      Navigation.setStackRoot(this.props.componentId, {
+        component: {
+          name: 'Home',
+        }
+      });
     } catch (error) {
       Alert.alert("Aviso", error);
     }
@@ -46,6 +51,16 @@ export default class LoginScreen extends Component {
         <TouchableOpacity onPress={this.entrarNaConta}
           style={styles.loginButton}>
           <Text style={styles.loginTextButton}>Entrar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+          Navigation.push(this.props.componentId, {
+            component: {
+              name: 'Cadastro',
+            }
+          });
+        }}
+          style={styles.loginButton}>
+          <Text style={styles.loginTextButton}>Cadastrar-se</Text>
         </TouchableOpacity>
       </View>
     );
@@ -70,7 +85,8 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#069'
+    backgroundColor: '#069',
+    marginBottom: 10
   },
   loginTextButton: {
     fontWeight: 'bold',

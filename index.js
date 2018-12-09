@@ -6,15 +6,15 @@ import { registrarScreens } from './utils/RegistrarScreens';
 registrarScreens();
 
 Navigation.events().registerAppLaunchedListener(() => {
-    Navigation.setRoot({
-        root: {
-          stack: {
-            children: [{
-              component: {
-                name: "Launcher"
-              }
-            }]
+  Navigation.setRoot({
+    root: {
+      stack: {
+        children: [{
+          component: {
+            name: "Launcher"
           }
-        }
-      });
-    });
+        }]
+      }
+    }
+  });
+});

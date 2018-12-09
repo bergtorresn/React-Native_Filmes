@@ -20,7 +20,7 @@ export const navegarParaHome = () => Navigation.setRoot({
             children: [
                 {
                     component: {
-                        name: 'Home',
+                        name: 'Home'
                     }
                 }
             ],

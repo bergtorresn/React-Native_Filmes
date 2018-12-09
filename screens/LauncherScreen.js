@@ -25,9 +25,9 @@ export default class LauncherScreen extends Component {
 
     componentDidMount() {
         if (usuarioLogado) {
-            navegarParaHome();
-        } else {
             navegarParaLogin();
+        } else {
+            navegarParaHome();
         }
     }
 
