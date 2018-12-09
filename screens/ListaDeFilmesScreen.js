@@ -5,10 +5,11 @@ import {
   StyleSheet
 } from 'react-native';
 import FilmeItem from '../components/FilmeItem';
+import { Navigation } from 'react-native-navigation'
 
 export default class ListaDeFilmesScreen extends Component {
 
-  static get options(){
+  static get options() {
     return {
       topBar: {
         title: {
@@ -43,15 +44,23 @@ export default class ListaDeFilmesScreen extends Component {
       <FlatList style={styles.listaFlatList} numColumns='2' data={this.state.filmes}
         keyExtractor={item => item.id.toString()}
         renderItem={({ item }) =>
-          <FilmeItem filme={item} />
+          <FilmeItem filme={item} onPress={this.navegarParaDatalheDoFilme} />
         }
       />
     );
+  }
+
+  navegarParaDatalheDoFilme = async () => {
+    await Navigation.push(this.props.componentId, {
+      component: {
+        name: 'Filme',
+      }
+    });
   }
 }
 
 const styles = StyleSheet.create({
   listaFlatList: {
-      flex: 1,
+    flex: 1,
   }
 });
