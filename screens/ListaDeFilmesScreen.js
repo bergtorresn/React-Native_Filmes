@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import {
   FlatList,
   Alert,
-  StyleSheet
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  TouchableOpacity,
 } from 'react-native';
-import FilmeItem from '../components/FilmeItem';
 import { Navigation } from 'react-native-navigation'
+
+const larguraDaTela = (Dimensions.get('screen').width / 2) - 15;
 
 export default class ListaDeFilmesScreen extends Component {
 
@@ -44,23 +50,37 @@ export default class ListaDeFilmesScreen extends Component {
       <FlatList style={styles.listaFlatList} numColumns='2' data={this.state.filmes}
         keyExtractor={item => item.id.toString()}
         renderItem={({ item }) =>
-          <FilmeItem filme={item} onPress={this.navegarParaDatalheDoFilme} />
+          <TouchableOpacity underlayColor='black' onPress={() => {
+            Navigation.push(this.props.componentId, {
+              component: {
+                name: 'Filme',
+              }
+            })
+          }}>
+            <View style={styles.filmeItemView}>
+              <Image source={{ uri: "https://image.tmdb.org/t/p/w200" + item.poster_path }} style={styles.filmeItemCapa} />
+              <Text style={styles.filmeItemTitulo}>{item.title}</Text>
+            </View>
+          </TouchableOpacity>
         }
       />
     );
-  }
-
-  navegarParaDatalheDoFilme = async () => {
-    await Navigation.push(this.props.componentId, {
-      component: {
-        name: 'Filme',
-      }
-    });
   }
 }
 
 const styles = StyleSheet.create({
   listaFlatList: {
     flex: 1,
+  },
+  filmeItemView: {
+    flex: 1,
+    marginLeft: 10,
+  },
+  filmeItemCapa: {
+    width: larguraDaTela,
+    height: 200
+  },
+  filmeItemTitulo: {
+    width: larguraDaTela
   }
 });

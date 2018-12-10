@@ -57,7 +57,7 @@ export default class LoginScreen extends Component {
             component: {
               name: 'Cadastro',
             }
-          });
+          })
         }}
           style={styles.loginButton}>
           <Text style={styles.loginTextButton}>Cadastrar-se</Text>
