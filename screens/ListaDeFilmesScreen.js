@@ -54,6 +54,7 @@ export default class ListaDeFilmesScreen extends Component {
             Navigation.push(this.props.componentId, {
               component: {
                 name: 'Filme',
+                passProps: item
               }
             })
           }}>
@@ -81,6 +82,7 @@ const styles = StyleSheet.create({
     height: 200
   },
   filmeItemTitulo: {
-    width: larguraDaTela
+    width: larguraDaTela,
+    marginBottom: 15
   }
 });
