@@ -34,18 +34,26 @@ export default class DetalhesDoFilmeScreen extends Component {
   }
 
   gerenciarStorage = async () => {
-    try {
-      const value = await AsyncStorage.getItem('testando');
-      if (value !== null) {
-        await AsyncStorage.removeItem('testando');
-        Alert.alert("desmarcou");
-      } else {
-        await AsyncStorage.setItem('testando', 'teste');
-        Alert.alert("marcou");
-      }
-    } catch (error) {
-      Alert.alert(error);
+    const filmeParaSerSalvo = {
+      'id': 15, 'title': "filme", 'backdrop_path': "/blv65adWsJQZ5Iog0OU5opVf6Oa.jpg", 'overview': "Filmão da porra"
+    };
+    const filmesFavoritos = await AsyncStorage.getItem('filmes');
+    let filmes = JSON.parse(filmesFavoritos);
+    if (!filmes) {
+      filmes = [];
+      filmes.push(filmeParaSerSalvo)
+    } else {
+      filmes.push(filmeParaSerSalvo);
     }
+    Alert(filmes.count);
+
+    await AsyncStorage.setItem('filmes', JSON.stringify(filmes))
+      .then(() => {
+        Alert("filmes salvo com sucesso");
+      })
+      .catch(() => {
+        Alert("deu ruim");
+      })
   }
 }
 

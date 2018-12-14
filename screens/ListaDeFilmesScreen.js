@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Navigation } from 'react-native-navigation'
+import firebase from 'react-native-firebase'
 
 const larguraDaTela = (Dimensions.get('screen').width / 2) - 15;
 
@@ -21,14 +22,40 @@ export default class ListaDeFilmesScreen extends Component {
         title: {
           text: "Filmes"
         },
+        leftButtons: [
+          {
+            id: 'btnSair',
+            text: 'Sair',
+          }
+        ],
+        rightButtons: [
+          {
+            id: 'btnFavoritos',
+            text: 'Favoritos',
+          }
+        ],
       }
     };
   }
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    Navigation.events().bindComponent(this);
     this.state = {
       filmes: []
+    }
+  }
+
+  navigationButtonPressed({ buttonId }) {
+    if (buttonId === 'btnSair') {
+      firebase.auth().signOut();
+      Navigation.setStackRoot(this.props.componentId, {
+        component: {
+          name: 'Login',
+        }
+      });
+    } else {
+      alert('favoritos');
     }
   }
 

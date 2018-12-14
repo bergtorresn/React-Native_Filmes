@@ -8,22 +8,11 @@ import {
 import { navegarParaLogin, navegarParaHome } from '../utils/Navegacao'
 import firebase from 'react-native-firebase'
 
-usuarioLogado = async () => {
-    try {
-        const user = await firebase.auth().currentUser.uid;
-        if (user !== null) {
-            return true;
-        }
-        return false;
-    } catch (error) {
-        Alert.alert("Aviso", error);
-    }
-}
-
 export default class LauncherScreen extends Component {
 
     componentDidMount() {
-        if (usuarioLogado) {
+        var user = firebase.auth().currentUser;
+        if (user !== null) {
             navegarParaHome();
         } else {
             navegarParaLogin();
