@@ -10,6 +10,7 @@ import {
   Alert,
   AsyncStorage
 } from 'react-native';
+import firebase from 'react-native-firebase'
 
 const larguraDaTela = Dimensions.get('screen').width;
 
@@ -34,10 +35,13 @@ export default class DetalhesDoFilmeScreen extends Component {
   }
 
   gerenciarStorage = async () => {
+    var user = firebase.auth().currentUser;
+
     const filmeParaSerSalvo = {
-      'id': 15, 'title': "filme", 'backdrop_path': "/blv65adWsJQZ5Iog0OU5opVf6Oa.jpg", 'overview': "Filmão da porra"
+      'id': this.props.id, 'title': this.props.title, 'backdrop_path': this.props.backdrop_path, 'overview': this.props.overview
     };
-    const filmesFavoritos = await AsyncStorage.getItem('filmes');
+    const filmesFavoritos = await AsyncStorage.getItem(user.uid.toString());
+
     let filmes = JSON.parse(filmesFavoritos);
     if (!filmes) {
       filmes = [];
@@ -45,14 +49,13 @@ export default class DetalhesDoFilmeScreen extends Component {
     } else {
       filmes.push(filmeParaSerSalvo);
     }
-    Alert(filmes.count);
 
-    await AsyncStorage.setItem('filmes', JSON.stringify(filmes))
+    await AsyncStorage.setItem(user.uid.toString(), JSON.stringify(filmes))
       .then(() => {
-        Alert("filmes salvo com sucesso");
+        Alert.alert("filmes salvo com sucesso");
       })
       .catch(() => {
-        Alert("deu ruim");
+        Alert.alert("deu ruim");
       })
   }
 }
