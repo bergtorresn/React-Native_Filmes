@@ -47,12 +47,18 @@ export default class DetalhesDoFilmeScreen extends Component {
       filmes = [];
       filmes.push(filmeParaSerSalvo)
     } else {
-      filmes.push(filmeParaSerSalvo);
+      let indexDoFilme = filmes.findIndex(x => x.id === this.props.id);
+      if (indexDoFilme !== -1){
+        filmes.splice(indexDoFilme, 1);
+      } else {
+        Alert.alert("filme add");
+        filmes.push(filmeParaSerSalvo);
+      }
     }
 
     await AsyncStorage.setItem(user.uid.toString(), JSON.stringify(filmes))
       .then(() => {
-        Alert.alert("filmes salvo com sucesso");
+        //Alert.alert("filmes salvo com sucesso");
       })
       .catch(() => {
         Alert.alert("deu ruim");
