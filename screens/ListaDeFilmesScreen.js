@@ -55,7 +55,11 @@ export default class ListaDeFilmesScreen extends Component {
         }
       });
     } else {
-      alert('favoritos');
+      Navigation.push(this.props.componentId, {
+        component: {
+          name: 'Favoritos',
+        }
+      });    
     }
   }
 

@@ -38,7 +38,7 @@ export default class DetalhesDoFilmeScreen extends Component {
     var user = firebase.auth().currentUser;
 
     const filmeParaSerSalvo = {
-      'id': this.props.id, 'title': this.props.title, 'backdrop_path': this.props.backdrop_path, 'overview': this.props.overview
+      'id': this.props.id, 'title': this.props.title, 'backdrop_path': this.props.backdrop_path, 'poster_path': this.props.poster_path, 'overview': this.props.overview
     };
     const filmesFavoritos = await AsyncStorage.getItem(user.uid.toString());
 
