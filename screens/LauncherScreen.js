@@ -9,8 +9,8 @@ import { navegarParaLogin, navegarParaHome } from '../utils/Navegacao'
 import firebase from 'react-native-firebase'
 
 export default class LauncherScreen extends Component {
-
-    componentDidMount() {
+    constructor(props) {
+        super(props);
         var user = firebase.auth().currentUser;
         if (user !== null) {
             navegarParaHome();
@@ -18,7 +18,6 @@ export default class LauncherScreen extends Component {
             navegarParaLogin();
         }
     }
-
     render() {
         return (
             <View style={styles.container}>

@@ -114,6 +114,8 @@ const styles = StyleSheet.create({
   },
   filmeItemTitulo: {
     width: larguraDaTela,
-    marginBottom: 15
+    marginBottom: 15,
+    fontWeight: 'bold',
+    marginTop: 5
   }
 });

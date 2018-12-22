@@ -21,9 +21,11 @@ export default class LoginScreen extends Component {
   }
 
   entrarNaConta = async () => {
-    const { email, senha } = this.state;
     try {
+      const { email, senha } = this.state;
+
       await firebase.auth().signInWithEmailAndPassword(email, senha);
+      
       Navigation.setStackRoot(this.props.componentId, {
         component: {
           name: 'Home',

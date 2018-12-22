@@ -25,7 +25,7 @@ export default class DetalhesDoFilmeScreen extends Component {
           <TouchableOpacity onPress={this.gerenciarStorage}
             underlayColor='black'
             style={styles.filmeDetalheBtnFavoritar}>
-            <Text>Salvar</Text>
+            <Text style={styles.filmeDetalheTituloDoBotao}>Salvar</Text>
           </TouchableOpacity>
           <Text style={styles.filmeDetalheTitulo}>{this.props.title}</Text>
           <Text style={styles.filmeDetalheSinopse}>{this.props.overview}</Text>
@@ -35,12 +35,12 @@ export default class DetalhesDoFilmeScreen extends Component {
   }
 
   gerenciarStorage = async () => {
-    var user = firebase.auth().currentUser;
+    var usuario = firebase.auth().currentUser;
 
     const filmeParaSerSalvo = {
       'id': this.props.id, 'title': this.props.title, 'backdrop_path': this.props.backdrop_path, 'poster_path': this.props.poster_path, 'overview': this.props.overview
     };
-    const filmesFavoritos = await AsyncStorage.getItem(user.uid.toString());
+    const filmesFavoritos = await AsyncStorage.getItem(usuario.uid.toString());
 
     let filmes = JSON.parse(filmesFavoritos);
     if (!filmes) {
@@ -48,21 +48,16 @@ export default class DetalhesDoFilmeScreen extends Component {
       filmes.push(filmeParaSerSalvo)
     } else {
       let indexDoFilme = filmes.findIndex(x => x.id === this.props.id);
-      if (indexDoFilme !== -1){
+      if (indexDoFilme !== -1) {
         filmes.splice(indexDoFilme, 1);
+        Alert.alert("Removido dos favoritos");
+        await AsyncStorage.setItem(usuario.uid.toString(), JSON.stringify(filmes));
       } else {
-        Alert.alert("filme add");
         filmes.push(filmeParaSerSalvo);
+        Alert.alert("Adicionado aos favoritos");
+        await AsyncStorage.setItem(usuario.uid.toString(), JSON.stringify(filmes));
       }
     }
-
-    await AsyncStorage.setItem(user.uid.toString(), JSON.stringify(filmes))
-      .then(() => {
-        //Alert.alert("filmes salvo com sucesso");
-      })
-      .catch(() => {
-        Alert.alert("deu ruim");
-      })
   }
 }
 
@@ -84,9 +79,14 @@ const styles = StyleSheet.create({
     marginRight: 10
   },
   filmeDetalheSinopse: {
-    width: larguraDaTela,
     fontSize: 18,
-    marginTop: 20
+    margin: 15
+  },
+  filmeDetalheTituloDoBotao: {
+    marginTop: 15,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'white'
   },
   filmeDetalheBtnFavoritar: {
     alignSelf: 'flex-end',

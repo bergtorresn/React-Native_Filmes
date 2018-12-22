@@ -20,10 +20,16 @@ export default class CadastroScreen extends Component {
     }
 
     novoUsuario = async () => {
-        const { email, senha } = this.state;
         try {
+            const { email, senha } = this.state;
+
             await firebase.auth().createUserWithEmailAndPassword(email, senha);
-            Alert.alert("Aviso", "Usuário criado com sucesso");
+            
+            Navigation.setStackRoot(this.props.componentId, {
+                component: {
+                    name: 'Home',
+                }
+            });
         } catch (error) {
             Alert.alert("Aviso", error);
         }
